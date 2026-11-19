@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida Legend — GTA VI Trophy Guide &amp; Tracker</title>
+<meta name="description" content="The complete Grand Theft Auto VI trophy guide and tracker: all 55 official PlayStation trophies with cited guides, missable warnings, a four-stage roadmap, a spoiler shield and saved progress.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="masthead">
+  <p class="kicker">Grand Theft Auto VI · PlayStation 5 · The Official 55 Trophies</p>
+  <h1>Leonida Legend</h1>
+  <p class="tagline">Every trophy guided, every missable flagged, every claim cited. Progress saves in your browser.</p>
+  <div class="progress-wrap">
+    <div class="progress-numbers">
+      <span id="progress-count">0 / 55 trophies</span>
+      <span id="progress-pct" class="progress-pct">0% complete</span>
+      <span id="progress-points">0 / 1350 PSN points</span>
+    </div>
+    <div class="progress-bar"><div id="progress-fill"></div></div>
+  </div>
+  <nav class="view-tabs" aria-label="Views">
+    <button id="tab-checklist" class="tab active" type="button">Checklist &amp; Guide</button>
+    <button id="tab-roadmap" class="tab" type="button">Roadmap &amp; Missables</button>
+  </nav>
+</header>
+
+<main>
+  <section id="view-checklist">
+    <div class="controls">
+      <div class="chips" id="kind-chips" role="group" aria-label="Filter by kind">
+        <button class="chip active" type="button" data-kind="all">All</button>
+        <button class="chip" type="button" data-kind="story">Story</button>
+        <button class="chip" type="button" data-kind="missable">Missable</button>
+        <button class="chip" type="button" data-kind="collectibles">Collectibles</button>
+        <button class="chip" type="button" data-kind="activities">Activities</button>
+        <button class="chip" type="button" data-kind="online">Online</button>
+      </div>
+      <div class="control-row">
+        <label class="control-label">Grade
+          <select id="grade-filter">
+            <option value="all">All grades</option>
+            <option value="bronze">Bronze</option>
+            <option value="silver">Silver</option>
+            <option value="gold">Gold</option>
+            <option value="platinum">Platinum</option>
+          </select>
+        </label>
+        <label class="control-label search-label">Search
+          <input id="search" type="search" placeholder="Search names and descriptions…">
+        </label>
+        <label class="control-label spoiler-label">
+          <input id="spoiler-toggle" type="checkbox">
+          Spoiler shield — hide unearned story trophies
+        </label>
+      </div>
+      <div class="control-row">
+        <button id="export-btn" class="tool-btn" type="button">Export progress</button>
+        <button id="import-btn" class="tool-btn" type="button">Import progress</button>
+        <input id="import-file" type="file" accept="application/json,.json" hidden>
+        <span id="visible-count" class="visible-count">Loading the trophy list…</span>
+      </div>
+    </div>
+
+    <div class="layout">
+      <ol id="trophy-list" class="trophy-list"></ol>
+      <aside id="detail-panel" class="detail-panel" aria-live="polite"></aside>
+    </div>
+  </section>
+
+  <section id="view-roadmap" hidden>
+    <div id="roadmap"></div>
+  </section>
+</main>
+
+<footer class="colophon">
+  <p>An unofficial fan guide. Trophy names and descriptions are the official PlayStation list; every guide here is written for this app and cites its sources beside the trophy. Progress is stored only in your browser — export it to keep a copy.</p>
+</footer>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

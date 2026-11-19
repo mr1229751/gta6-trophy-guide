@@ -1,0 +1,491 @@
+/* Leonida Legend — a Leonida sunset in pure CSS.
+   Deep violet dusk at the top of the page melting through magenta into
+   amber at the horizon; postcard serif display type over system sans;
+   dark plum panels keep the cream text readable at any window size.
+   No images, no webfonts, nothing loaded from anywhere else. */
+
+:root {
+  --plum-950: #150420;
+  --plum-900: #22082f;
+  --plum-800: #33104a;
+  --panel: rgba(24, 5, 36, 0.92);
+  --panel-soft: rgba(255, 243, 223, 0.07);
+  --cream: #fff3df;
+  --cream-dim: #ecd3ac;
+  --amber: #ffb347;
+  --pink: #ff5e7a;
+  --alert: #e5383b;
+  --earned: #3f9d74;
+  --line: rgba(255, 179, 71, 0.35);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--cream);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+  background:
+    linear-gradient(168deg,
+      #12041f 0%, #2a0a44 30%, #57194f 55%,
+      #a83256 76%, #e2603a 90%, #f59e4c 100%)
+    fixed;
+}
+
+/* ---------- masthead ---------- */
+
+.masthead {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 18px 24px 4px;
+  text-align: center;
+}
+
+.kicker {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+h1 {
+  margin: 0;
+  font-family: Georgia, "Palatino Linotype", "Book Antiqua", "Times New Roman", serif;
+  font-size: clamp(40px, 5.5vw, 58px);
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  line-height: 1.02;
+  color: var(--cream);
+  text-shadow: 0 3px 0 rgba(21, 4, 32, 0.55), 0 10px 34px rgba(21, 4, 32, 0.65);
+}
+
+.tagline {
+  max-width: 880px;
+  margin: 12px auto 0;
+  font-size: 18px;
+  color: var(--cream);
+}
+
+.progress-wrap {
+  max-width: 720px;
+  margin: 18px auto 0;
+  padding: 12px 18px 8px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.progress-numbers {
+  display: flex;
+  justify-content: space-between;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.progress-bar {
+  height: 12px;
+  margin-top: 8px;
+  border-radius: 999px;
+  background: rgba(255, 243, 223, 0.16);
+  overflow: hidden;
+}
+
+#progress-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--amber), var(--pink));
+  transition: width 0.35s ease;
+}
+
+.progress-pct {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--cream-dim);
+}
+
+.view-tabs {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 16px 0 4px;
+}
+
+.tab {
+  font: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 9px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--cream);
+  cursor: pointer;
+}
+
+.tab.active {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: #2a0e3f;
+}
+
+/* ---------- layout ---------- */
+
+main {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 10px 24px 30px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+/* ---------- controls ---------- */
+
+.controls {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px 18px;
+  margin-bottom: 16px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 243, 223, 0.45);
+  background: transparent;
+  color: var(--cream);
+  cursor: pointer;
+}
+
+.chip.active {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: #2a0e3f;
+}
+
+.control-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 22px;
+  align-items: center;
+  margin-top: 11px;
+}
+
+.control-label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 600;
+}
+
+.search-label { flex: 1 1 260px; }
+.search-label input { flex: 1; }
+
+select,
+input[type="search"] {
+  font: inherit;
+  font-size: 16px;
+  padding: 9px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 243, 223, 0.45);
+  background: var(--plum-900);
+  color: var(--cream);
+}
+
+.spoiler-label { cursor: pointer; }
+.spoiler-label input {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--amber);
+}
+
+.tool-btn {
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 9px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--amber);
+  background: transparent;
+  color: var(--amber);
+  cursor: pointer;
+}
+
+.tool-btn:hover { background: rgba(255, 179, 71, 0.16); }
+
+.visible-count { color: var(--cream-dim); font-size: 15px; }
+
+/* ---------- checklist ---------- */
+
+.trophy-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.trophy-row {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  background: var(--panel);
+  border: 1px solid rgba(255, 243, 223, 0.16);
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.trophy-row:hover { border-color: var(--line); }
+
+.trophy-row.is-selected {
+  border-color: var(--amber);
+  box-shadow: 0 0 0 2px var(--amber) inset;
+}
+
+.trophy-row.is-checked { background: rgba(28, 40, 34, 0.94); }
+
+.row-check input {
+  width: 28px;
+  height: 28px;
+  margin-top: 4px;
+  accent-color: var(--earned);
+  cursor: pointer;
+}
+
+.row-main { min-width: 0; }
+
+.row-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  align-items: center;
+}
+
+.badge {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.grade-bronze { background: #b06a35; color: #fff7ea; }
+.grade-silver { background: #d7dee6; color: #23202e; }
+.grade-gold { background: #f4b942; color: #2a1600; }
+.grade-platinum { background: #a9ece5; color: #07332f; }
+
+.kind-tag {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 243, 223, 0.5);
+  color: var(--cream-dim);
+}
+
+.missable-flag {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--alert);
+  color: #ffffff;
+}
+
+.row-name {
+  margin: 7px 0 3px;
+  font-size: 21px;
+  line-height: 1.2;
+}
+
+.trophy-row.is-checked .row-name { color: var(--cream-dim); }
+
+.row-desc {
+  margin: 0;
+  font-size: 16px;
+  color: var(--cream-dim);
+}
+
+.list-empty {
+  padding: 26px;
+  text-align: center;
+  background: var(--panel);
+  border-radius: 14px;
+  color: var(--cream-dim);
+}
+
+/* ---------- detail panel ---------- */
+
+.detail-panel {
+  position: sticky;
+  top: 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 20px;
+}
+
+.detail-title {
+  margin: 10px 0 4px;
+  font-family: Georgia, "Palatino Linotype", "Book Antiqua", "Times New Roman", serif;
+  font-size: 32px;
+  line-height: 1.12;
+}
+
+.detail-hint { color: var(--cream-dim); font-size: 17px; }
+
+.detail-head {
+  margin: 10px 0 6px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.detail-desc { margin: 0; font-size: 18px; font-style: italic; }
+
+.detail-guide { margin: 0; font-size: 17px; line-height: 1.6; }
+
+.missable-warning {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-left: 4px solid var(--alert);
+  border-radius: 8px;
+  background: rgba(229, 56, 59, 0.16);
+  font-size: 16px;
+}
+
+.detail-steps {
+  margin: 0;
+  padding-left: 22px;
+  font-size: 16.5px;
+  line-height: 1.55;
+}
+
+.detail-steps li { margin-bottom: 5px; }
+
+.detail-sources {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 16px;
+}
+
+.detail-sources a { color: var(--amber); }
+.detail-sources a:hover { color: var(--pink); }
+
+/* ---------- roadmap ---------- */
+
+.stage-block,
+.missables-block {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+
+.stage-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.stage-title {
+  margin: 0;
+  font-family: Georgia, "Palatino Linotype", "Book Antiqua", "Times New Roman", serif;
+  font-size: 29px;
+}
+
+.stage-count { font-size: 18px; font-weight: 700; color: var(--amber); }
+
+.stage-blurb { margin: 8px 0 14px; color: var(--cream-dim); font-size: 16.5px; }
+
+.stage-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.stage-chip {
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 243, 223, 0.35);
+  background: var(--panel-soft);
+  color: var(--cream);
+  cursor: pointer;
+}
+
+.stage-chip.is-earned {
+  background: rgba(63, 157, 116, 0.4);
+  border-color: var(--earned);
+}
+
+.missable-card {
+  border-left: 4px solid var(--alert);
+  background: rgba(229, 56, 59, 0.1);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-top: 12px;
+}
+
+.missable-name { margin: 8px 0 4px; font-size: 22px; }
+
+.missable-deadline {
+  margin: 0 0 8px;
+  font-weight: 800;
+  color: #ffb3b5;
+}
+
+.missable-guide { margin: 0; font-size: 16.5px; line-height: 1.6; }
+
+/* ---------- footer ---------- */
+
+.colophon {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 6px 24px 42px;
+  color: var(--cream-dim);
+  font-size: 14.5px;
+  text-align: center;
+}
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 920px) {
+  .layout { grid-template-columns: minmax(0, 1fr); }
+  .detail-panel { position: static; }
+  .progress-numbers { font-size: 17px; }
+}
+
+:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 2px;
+}
