@@ -3,23 +3,45 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
+<meta name="theme-color" content="#0a0f12">
+<meta name="description" content="An offline checklist, roadmap and missables tracker for the 55 Grand Theft Auto VI trophies on PlayStation 5.">
+<title>GTA VI trophy guide and tracker</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<a class="skip-link" href="#view">Skip to the trophy list</a>
+
+<header class="masthead">
+  <div class="masthead__text">
+    <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span>Grand Theft Auto VI · Leonida · PlayStation 5</p>
+    <h1 class="masthead__title">Trophy guide <span class="masthead__amp">&amp;</span> tracker</h1>
+    <p class="masthead__lede">All 55 trophies, the ten that close for good, and the six-stage route that ends at the platinum. Ticks stay in this browser — nothing here touches the network.</p>
+  </div>
+  <div class="masthead__progress" id="masthead-progress">
+    <noscript><p class="masthead__noscript">This tracker draws its list with JavaScript, so turn it on to tick anything off.</p></noscript>
+  </div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
-<script type="module" src="app.js"></script>
+
+<nav class="tabs" aria-label="Guide views">
+  <button class="tab" type="button" data-view="checklist" aria-current="page">Checklist</button>
+  <button class="tab" type="button" data-view="roadmap">Roadmap</button>
+  <button class="tab" type="button" data-view="missables">Missables</button>
+  <p class="tabs__hint">Shortcuts: <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> switch view · <kbd>/</kbd> search</p>
+</nav>
+
+<main class="shell" id="main">
+  <aside class="rail" id="rail" aria-label="Progress and save tools"></aside>
+  <section class="view" id="view" tabindex="-1" aria-label="Trophy views"></section>
+</main>
+
+<footer class="foot">
+  <p>Trophy names, grades and descriptions follow the published PlayStation 5 list. Every walkthrough line below is written for this tracker and cites the pages it draws on; source links open in a new tab.</p>
+  <p class="foot__meta">Offline build · no accounts · progress never leaves this device</p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<textarea class="summary-fallback" id="summary-fallback" hidden readonly aria-label="Progress summary text"></textarea>
+
+<script type="module" src="js/app.js"></script>
 </body>
 </html>
